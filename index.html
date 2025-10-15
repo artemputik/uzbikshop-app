@@ -1,191 +1,124 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UzbikShop - Магазин ботов</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        /* ОСНОВА */
-        body {
-            background: #0f0f0f;
-            color: #fff;
-            font-family: 'Segoe UI', sans-serif;
-            padding: 16px;
-            max-width: 400px;
-            margin: 0 auto;
-        }
-
-        /* ШАПКА */
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 1px solid #333;
-            padding-bottom: 15px;
-        }
-
-        .shop-title {
-            font-size: 24px;
-            font-weight: bold;
-            color: #8a2be2;
-            margin-bottom: 5px;
-        }
-
-        .shop-subtitle {
-            color: #aaa;
-            font-size: 14px;
-        }
-
-        /* СЕТКА БОТОВ */
-        .bots-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            margin-bottom: 25px;
-        }
-
-        .bot-card {
-            background: #1a1a1a;
-            border: 1px solid #333;
-            border-radius: 8px;
-            padding: 16px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .bot-info {
-            flex: 1;
-        }
-
-        .bot-name {
-            font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-
-        .bot-description {
-            color: #888;
-            font-size: 12px;
-            margin-bottom: 6px;
-        }
-
-        .bot-price {
-            color: #8a2be2;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        /* КНОПКА "ВЫБРАТЬ" */
-        .select-btn {
-            background: #8a2be2;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            padding: 8px 16px;
-            font-size: 14px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .select-btn:hover {
-            background: #9b4de6;
-        }
-
-        /* ПОДДЕРЖКА */
-        .support {
-            text-align: center;
-            margin-top: 25px;
-            padding-top: 20px;
-            border-top: 1px solid #333;
-            color: #666;
-            font-size: 12px;
-        }
-
-        .support-link {
-            color: #8a2be2;
-            text-decoration: none;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TATI UC — Боты</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+  body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg,#7c4be0,#5b37a7);
+    color: #fff;
+  }
+  .container {
+    padding: 20px;
+    max-width: 420px;
+    margin: 0 auto;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+  .banner {
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    text-align: center;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    font-weight: 600;
+  }
+  .grid {
+    display: grid;
+    gap: 14px;
+  }
+  .card {
+    background: rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .meta h2 {
+    margin: 0;
+    font-size: 16px;
+  }
+  .meta p {
+    margin: 0;
+    color: #ccc;
+    font-size: 13px;
+  }
+  button {
+    background: #2e1248;
+    color: #fff;
+    border: none;
+    padding: 8px 14px;
+    border-radius: 10px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button:active {
+    transform: scale(0.97);
+  }
+</style>
 </head>
 <body>
-    <div class="header">
-        <div class="shop-title">UZBIKSHOP</div>
-        <div class="shop-subtitle">Магазин ботов</div>
+<div class="container">
+  <h1>Магазин ботов</h1>
+  <div class="banner">🎁 Розыгрыш iPhone 17 Pro Max</div>
+
+  <div class="grid">
+    <div class="card">
+      <div class="meta">
+        <h2>🤖 Бот для продажи</h2>
+        <p>50⭐ или 100₽</p>
+      </div>
+      <button onclick="selectBot('Бот для продажи', '100₽')">Выбрать</button>
     </div>
 
-    <div class="bots-grid">
-        <!-- Продающий бот -->
-        <div class="bot-card">
-            <div class="bot-info">
-                <div class="bot-name">🤖 Продающий бот</div>
-                <div class="bot-description">Каталог товаров, корзина, уведомления</div>
-                <div class="bot-price">50 звёзд</div>
-            </div>
-            <button class="select-btn" onclick="selectBot('sales')">ВЫБРАТЬ</button>
-        </div>
-
-        <!-- Информационный бот -->
-        <div class="bot-card">
-            <div class="bot-info">
-                <div class="bot-name">📊 Информационный бот</div>
-                <div class="bot-description">Рассылки, FAQ, управление контентом</div>
-                <div class="bot-price">30 звёзд</div>
-            </div>
-            <button class="select-btn" onclick="selectBot('info')">ВЫБРАТЬ</button>
-        </div>
-
-        <!-- Кастомный бот -->
-        <div class="bot-card">
-            <div class="bot-info">
-                <div class="bot-name">⚙️ Кастомный бот</div>
-                <div class="bot-description">Уникальный функционал под ваши задачи</div>
-                <div class="bot-price">индивидуально</div>
-            </div>
-            <button class="select-btn" onclick="selectBot('custom')">ВЫБРАТЬ</button>
-        </div>
+    <div class="card">
+      <div class="meta">
+        <h2>📡 Информационный бот</h2>
+        <p>30⭐ или 60₽</p>
+      </div>
+      <button onclick="selectBot('Информационный бот', '60₽')">Выбрать</button>
     </div>
 
-    <div class="support">
-        По всем вопросам: <a href="https://t.me/rt_of" class="support-link">@rt_of</a><br>
-        UzbikShop — с любовью к клиентам 💜
+    <div class="card">
+      <div class="meta">
+        <h2>🎛️ Кастомный бот</h2>
+        <p>100⭐ или 300₽</p>
+      </div>
+      <button onclick="selectBot('Кастомный бот', '300₽')">Выбрать</button>
     </div>
+  </div>
+</div>
 
-    <script>
-        function selectBot(type) {
-            const botInfo = {
-                sales: {
-                    title: "🤖 ПРОДАЮЩИЙ БОТ",
-                    price: "50 звёзд",
-                    desc: "Готовый бот для онлайн-продаж с каталогом товаров, корзиной и уведомлениями админу."
-                },
-                info: {
-                    title: "📊 ИНФОРМАЦИОННЫЙ БОТ", 
-                    price: "30 звёзд",
-                    desc: "Бот для рассылок, FAQ и управления контентом с гибкими настройками."
-                },
-                custom: {
-                    title: "⚙️ КАСТОМНЫЙ БОТ",
-                    price: "индивидуально",
-                    desc: "Уникальный бот под ваши задачи с полным контролем и приоритетной поддержкой."
-                }
-            };
+<script>
+const tg = window.Telegram.WebApp;
+tg.expand(); // раскрывает Mini App на весь экран
 
-            const bot = botInfo[type];
-            const message = `${bot.title}\n\n${bot.desc}\n\n💵 Стоимость: ${bot.price}\n\n💬 Для заказа: @rt_of`;
+function selectBot(name, price) {
+  const message = `Хочу заказать ${name} (${price})`;
+  const tgUser = "rt_of";
 
-            if (Telegram && Telegram.WebApp) {
-                Telegram.WebApp.showAlert(message);
-            } else {
-                alert(message);
-            }
-        }
+  // Если в Mini App — можно отправить данные обратно боту
+  if (tg && tg.sendData) {
+    tg.sendData(JSON.stringify({bot: name, price: price}));
+  }
 
-        // Инициализация Telegram Web App
-        if (Telegram && Telegram.WebApp) {
-            Telegram.WebApp.ready();
-            Telegram.WebApp.expand();
-        }
-    </script>
+  // Переход в Telegram
+  const link = `https://t.me/${tgUser}?text=${encodeURIComponent(message)}`;
+  window.open(link, "_blank");
+}
+</script>
 </body>
 </html>
