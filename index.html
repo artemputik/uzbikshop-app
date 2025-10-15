@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UzbikShop - Боты и игровая валюта</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Главный экран -->
+        <div id="mainMenu" class="screen active">
+            <div class="header">
+                <div class="logo">🛍️ UZBIKSHOP</div>
+                <div class="subtitle">Боты и игровая валюта</div>
+            </div>
+            
+            <div class="menu-buttons">
+                <button class="menu-btn neon-purple" onclick="showScreen('botsScreen')">
+                    <span class="btn-icon">🤖</span>
+                    <span class="btn-text">Боты</span>
+                </button>
+                
+                <button class="menu-btn neon-blue" onclick="showScreen('currencyScreen')">
+                    <span class="btn-icon">🎮</span>
+                    <span class="btn-text">Игровая валюта</span>
+                </button>
+                
+                <button class="menu-btn neon-pink" onclick="openTelegram('@твой_ник')">
+                    <span class="btn-icon">💬</span>
+                    <span class="btn-text">Поддержка</span>
+                </button>
+            </div>
+
+            <div class="footer">
+                UzbikShop — с любовью к клиентам 💜
+            </div>
+        </div>
+
+        <!-- Экран ботов -->
+        <div id="botsScreen" class="screen">
+            <button class="back-btn" onclick="showScreen('mainMenu')">← Назад</button>
+            
+            <h2>🤖 Выберите тип бота</h2>
+            
+            <div class="product-grid">
+                <div class="product-card" onclick="showProductInfo('bot', 'sales')">
+                    <div class="product-icon">🛒</div>
+                    <div class="product-name">Продающий бот</div>
+                    <div class="product-price">50 звёзд</div>
+                </div>
+                
+                <div class="product-card" onclick="showProductInfo('bot', 'info')">
+                    <div class="product-icon">📊</div>
+                    <div class="product-name">Информационный бот</div>
+                    <div class="product-price">30 звёзд</div>
+                </div>
+                
+                <div class="product-card" onclick="showProductInfo('bot', 'custom')">
+                    <div class="product-icon">⚙️</div>
+                    <div class="product-name">Кастомный бот</div>
+                    <div class="product-price">Индивидуально</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Экран валюты -->
+        <div id="currencyScreen" class="screen">
+            <button class="back-btn" onclick="showScreen('mainMenu')">← Назад</button>
+            
+            <h2>🎮 Игровая валюта</h2>
+            
+            <div class="product-grid">
+                <div class="product-card" onclick="showProductInfo('currency', 'uc')">
+                    <div class="product-icon">🎯</div>
+                    <div class="product-name">UC (PUBG Mobile)</div>
+                    <div class="product-price">от 90₽</div>
+                </div>
+                
+                <div class="product-card" onclick="showProductInfo('currency', 'gold')">
+                    <div class="product-icon">⭐</div>
+                    <div class="product-name">Голда (Standoff 2)</div>
+                    <div class="product-price">от 50₽</div>
+                </div>
+                
+                <div class="product-card" onclick="showProductInfo('currency', 'other')">
+                    <div class="product-icon">🎲</div>
+                    <div class="product-name">Другая валюта</div>
+                    <div class="product-price">Уточняйте</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
